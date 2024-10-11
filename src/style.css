@@ -1,0 +1,328 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+
+:root{
+  --color-background: #fafafa;
+  --color-text: #0a0a0a;
+  --color-text-highlight: #fed7aa;
+  --color-red: #ef4444;
+  --color-yellow: #fbbf24;
+  --color-blue: #3b82f6;
+}
+
+body{
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 0 10px;
+}
+
+.dark-mode{
+  --color-background: #0a0a0a;
+  --color-text: #fafafa;
+  --color-text-highlight: #f87171;
+}
+
+#header-container{
+  font-size: 35px;
+}
+
+.flex-apart{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.1em;
+}
+
+#dark-mode-button{
+  border: 3px solid transparent;
+  border-radius: 20px;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  padding: 10px;
+  margin: 10px;
+  transition: 0.1s;
+}
+
+#dark-mode-button:hover, #add-project-button:hover{
+  border-color: var(--color-text);
+}
+
+#header-container, .nav-section{
+  --line-width: 2px;
+  margin-bottom: calc(var(--line-width) + 10px);
+  position: relative;
+}
+
+#nav-container, #main-container{
+  --line-width: 2px;
+  margin-right: var(--line-width);
+  position: relative;
+}
+
+#nav-container{
+  flex: 1 1 300px;
+}
+
+#header-container::after, #nav-container::after, #main-container::after, .nav-section::after{
+  /* Sketch Style Outline */
+  content: '';
+  position: absolute; 
+  background-color: currentColor;
+  border: 1px solid currentColor;
+  border-top-left-radius: 255px 50px;
+  border-top-right-radius: 100px 225px;
+  border-bottom-right-radius: 225px 50px;
+  border-bottom-left-radius: 50px 255px;
+}
+
+#header-container::after, .nav-section::after{
+  /* Sketch Style Outline: Bottom Position*/
+  bottom: calc(-1 * var(--line-width));
+  height: var(--line-width);
+  width: 100%;
+}
+
+#nav-container::after, #main-container::after{
+  /* Sketch Style Outline: Right Side Position*/
+  right: calc(-1 * var(--line-width));
+  top: 0;
+  height: 99%;
+  width: var(--line-width);
+}
+
+.icon-text-container{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 5px;
+  position: relative;
+  transition: 0.1s;
+}
+
+.task-container{
+  min-height: 2em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-container > *{
+  flex: none;
+}
+
+.task-name-container{
+  transition: 0.1s;
+  flex: auto;
+}
+
+.color-red .icon-container svg{
+  fill: var(--color-red);
+}
+
+.color-yellow .icon-container svg{
+  fill: var(--color-yellow);
+}
+
+.color-blue .icon-container svg{
+  fill: var(--color-blue);
+}
+
+.color-red{
+  color: var(--color-red);
+}
+
+.color-blue{
+  color: var(--color-blue);
+}
+
+.task-container input[type="checkbox"]{
+  width: 0.8em;
+  height: 0.8em;
+  accent-color: var(--color-text);
+}
+
+#nav-container .icon-text-container:hover, .icon-text-container.selected, .task-name-container:hover, .selected .task-name-container{
+  font-size: 1.1em;
+}
+ 
+#nav-container .icon-text-container:hover > .text-container,  .icon-text-container.selected > .text-container, .task-name-container:hover > div, .selected .task-name-container > div{
+  display: inline;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 65%, var(--color-text-highlight) 65%);
+}
+
+
+.icon-text-container svg, button svg{
+  width: 1em;
+  height: 1em;
+  fill: var(--color-text);
+}
+
+.hide, .dropdown-container.hide{
+  display: none;
+}
+
+.nav-section{
+  font-size: 25px;
+  display: grid;
+  gap: 5px;
+  grid-auto-rows: minmax(1.7em, auto);
+  padding-bottom: 10px;
+  margin-right: 10px;
+}
+
+#add-project-container{
+  font-size: 35px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#add-project-button{
+  background-color: transparent;
+  border: 6px dotted transparent;
+  border-radius: 16px;
+  padding: 5px;
+  margin: 5px;
+  transition: 0.1s;
+  font-size: 1.1em;
+  width: max-content;
+}
+
+dialog{
+  margin: auto;
+  max-width: 120ch;
+}
+
+dialog::backdrop{
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#new-project-dialog form{
+  font-size: 25px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+}
+
+#new-project-dialog .form-segment{
+  grid-column: span 2;
+}
+
+.form-segment{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+form button{
+  padding: 0 25px;
+  background-color: transparent;
+  border: 2px solid currentColor;
+  border-radius: 6px;
+}
+
+form button:hover{
+  background-color: var(--color-text-highlight);
+}
+
+#main-container, #side-container{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 5px;
+  font-size: 25px;
+  flex: 2 2 600px;
+}
+
+#main-container button, #delete-task-button{
+  background-color: transparent;
+  border: 6px dotted transparent;
+  border-radius: 16px;
+  padding: 5px;
+  margin: 5px;
+  position: relative;
+}
+
+#delete-task-button{
+  font-size: 35px;
+}
+
+#main-container button:hover, #delete-task-button:hover{
+  border-color: var(--color-text);
+}
+
+#main-container-header{
+  font-size: 35px;
+}
+
+input{
+  flex: auto;
+  border: 2px solid var(--color-text);
+  border-radius: 3px;
+  padding: 0 1ch;
+}
+
+.icon-container{
+  flex:none;
+  width: max-content;
+}
+
+.textarea-display-type{
+  color: var(--color-text);
+  resize: none;
+  border: none;
+  background-color: transparent;
+}
+
+.dropdown-container{
+  z-index: 1;
+  font-size: 30px;
+  position: absolute;
+  top: 100%;
+  margin-top: 10px;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  border: 2px solid var(--color-text);
+  padding: 10px 20px;
+  width: max-content;
+}
+
+#content-body{
+  display: flex;
+  min-height: 90vh;
+}
+
+.task-form{
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: max-content 1fr max-content;
+  gap: 10px;
+}
+
+.task-form-top-right-segment{
+  display: grid;
+  gap: 10px;
+}
+
+.description-text{
+  grid-column: span 2;
+  padding: 10px;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+.task-form .submit-button{
+  grid-column: span 2;
+  display: grid;
+  place-content: center;
+  padding: 5px 25px;
+  color: var(--color-text);
+}
+
+.larger-font{
+  font-size: 50px;
+}
