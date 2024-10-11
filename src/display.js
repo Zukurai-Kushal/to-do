@@ -7,7 +7,6 @@ import projectIcon from "./assets/project_icon.svg";
 import darkModeIcon from "./assets/dark_mode_icon.svg";
 import tickIcon from "./assets/tick_icon.svg";
 import leftArrowIcon from "./assets/left_arrow_icon.svg";
-import rightArrowIcon from "./assets/right_arrow_icon.svg";
 import deleteIcon from "./assets/delete_icon.svg";
 import pencilIcon from "./assets/pencil_icon.svg";
 import flagIcon from "./assets/flag_icon.svg";
@@ -339,6 +338,8 @@ function displayTasksOnMainScreen(filter){
 }
 
 function createSortSelectionButton(){
+    const sortSelectionContainer = document.createElement("div");
+    sortSelectionContainer.style.position = "relative";
     const sortSelectionButton = createSVGButton(sortIcon,"sort-selection-button");
     const sortSelectionForm = createDropdownForm(["form-segment"]);
     sortSelectionForm.appendChild(createFormLabel("Sort by:","sort-preference"));
@@ -349,11 +350,12 @@ function createSortSelectionButton(){
             refreshMainDisplay();
         }
     })
-    sortSelectionButton.appendChild(sortSelectionForm);
-    sortSelectionButton.onclick = ()=>{
+    sortSelectionButton.onclick = (e)=>{
         sortSelectionForm.classList.toggle("hide");
     };
-    return sortSelectionButton;
+    sortSelectionContainer.appendChild(sortSelectionButton);
+    sortSelectionContainer.appendChild(sortSelectionForm);
+    return sortSelectionContainer;
 }
 
 function displayProjectOnMainScreen(projectID){
@@ -612,16 +614,7 @@ function createHideNavButton(){
     const hideNavButton = createSVGButton(leftArrowIcon, "hide-nav-button");
     hideNavButton.onclick = ()=>{
         navContainer.classList.toggle("hide");
-        let icon = leftArrowIcon;
-        if(navContainer.classList.contains("hide")){
-            icon = rightArrowIcon;
-        }
-        fetch(icon)
-        .then(response => response.text())
-        .then(svg => {
-            hideNavButton.querySelector(".icon-container").innerHTML = svg;
-        })
-        .catch(error => console.error('Error loading the SVG: ', error));
+        hideNavButton.classList.toggle("rotate-180");
     };
     return hideNavButton;
 }

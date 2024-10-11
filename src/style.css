@@ -164,6 +164,10 @@ body{
   display: none;
 }
 
+.rotate-180{
+  transform: rotate(180deg);
+}
+
 .nav-section{
   font-size: 25px;
   display: grid;
@@ -206,6 +210,8 @@ dialog::backdrop{
   grid-template-columns: 1fr 1fr;
 }
 
+
+
 #new-project-dialog .form-segment{
   grid-column: span 2;
 }
@@ -220,6 +226,7 @@ dialog::backdrop{
 form button{
   padding: 0 25px;
   background-color: transparent;
+  color: currentColor;
   border: 2px solid currentColor;
   border-radius: 6px;
 }
@@ -260,7 +267,7 @@ form button:hover{
 
 input{
   flex: auto;
-  border: 2px solid var(--color-text);
+  border: 2px solid currentColor;
   border-radius: 3px;
   padding: 0 1ch;
 }
