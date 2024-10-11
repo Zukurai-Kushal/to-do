@@ -86,7 +86,9 @@ function createSVGButton(SVG_path, IDTag=undefined, text=undefined){
 
 function initHeader(){
     headerContainer.innerHTML = '';
-    headerContainer.appendChild(createSVGTextContainer(appLogo, "MyTasks"));
+    const logoContainer = createSVGTextContainer(appLogo, "MyTasks");
+    logoContainer.onclick = ()=>{window.location.reload()};
+    headerContainer.appendChild(logoContainer);
     const darkModeButton = createSVGButton(darkModeIcon, "dark-mode-button");
     darkModeButton.onclick = toggleDarkMode;
     headerContainer.appendChild(darkModeButton);
