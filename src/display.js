@@ -579,17 +579,11 @@ function displayTask(taskID){
     const descriptionText = createTextArea(task['description'], 10, 50, ["description-text"]);
     descriptionText.setAttribute("placeholder", "Description");
 
-    const submitButton = createFormButton("submit", "");
-    submitButton.appendChild(createSVGTextContainer(pencilIcon, "Submit"));
-    submitButton.classList.add("submit-button");
-
     taskForm.appendChild(taskProjectNamePair);
     taskForm.appendChild(topRightSegment);
     taskForm.appendChild(descriptionText);
-    taskForm.appendChild(submitButton);
 
-    taskForm.addEventListener("submit", (e)=>{
-        e.preventDefault();
+    taskForm.addEventListener("change", ()=>{
         const updatedTask = {
             "task-ID" : taskID,
             "task-name" : taskName.value || task['task-name'],
@@ -602,6 +596,8 @@ function displayTask(taskID){
         events.trigger("update-task", updatedTask);
         refreshMainDisplay();
     })
+
+
     sideContainer.appendChild(taskForm);
 }
 

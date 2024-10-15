@@ -320,6 +320,7 @@ input{
   padding: 10px;
   color: var(--color-text);
   background-color: var(--color-background);
+  font-size: 30px;
 }
 
 .task-form .submit-button{
