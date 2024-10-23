@@ -597,7 +597,6 @@ function displayTask(taskID){
         refreshMainDisplay();
     })
 
-
     sideContainer.appendChild(taskForm);
 }
 
