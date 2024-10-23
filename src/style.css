@@ -146,11 +146,13 @@ body{
 
 #nav-container .icon-text-container:hover, .icon-text-container.selected, .task-name-container:hover, .selected .task-name-container{
   font-size: 1.1em;
+  cursor: pointer;
 }
  
 #nav-container .icon-text-container:hover > .text-container,  .icon-text-container.selected > .text-container, .task-name-container:hover > div, .selected .task-name-container > div{
   display: inline;
   background: linear-gradient(180deg, rgba(255,255,255,0) 65%, var(--color-text-highlight) 65%);
+  cursor: pointer;
 }
 
 
@@ -209,8 +211,6 @@ dialog::backdrop{
   gap: 10px;
   grid-template-columns: 1fr 1fr;
 }
-
-
 
 #new-project-dialog .form-segment{
   grid-column: span 2;
