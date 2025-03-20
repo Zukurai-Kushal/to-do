@@ -18,6 +18,7 @@ Welcome to **My Tasks!** This web application helps you manage and schedule your
 - Implemented the **PubSub** model for better organization and communication between components.
 - Gained experience using **npm** packages for streamlined development.
 - Learned how to utilize **Webpack** for effective resource bundling.
+- Learned how to utilize **local storage** for storing **JSON** data persistently.
 
 ## Live Preview
 
